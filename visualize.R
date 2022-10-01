@@ -45,7 +45,7 @@ make_or_plot <- function(df, ordered_names, title_name) {
 	pp <-  ggplot() + geom_point(data=df2, mapping=aes(x=antibiotic_name, y=odds_ratio), color="dodgerblue2",size=2.5) +
 					geom_errorbar(data=df2, mapping=aes(x=antibiotic_name,ymin=lower_bounds, ymax=upper_bounds),color="dodgerblue3",width=0.0) +
 					labs(x = "", y = "Odds ratio", title=title_name) +
-					geom_hline(yintercept = 1, size=.00001,linetype="dashed") +
+					geom_hline(yintercept = 1, size=.23,linetype="dashed") +
 					gtex_v8_figure_theme() +
 					theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
 					theme(plot.title = element_text(hjust = 0.5))
@@ -94,29 +94,4 @@ joint <- plot_grid(or_plot1, or_plot2, ncol=1, labels=c("A", "B"))
 output_file <- paste0("joint_by_antibiotic_usage_enrichment_odds_ratio_plot.pdf")
 ggsave(joint, file=output_file, width=7.2, height=7.0, units="in")
 
-
-
-
-
-#input_file <- paste0(output_stem, "_data_total_number.txt")
-
-#df <- read.table(input_file, header=TRUE, sep="\t")
-
-
-#barplot <- make_bar_plot(df)
-#output_file <- paste0(output_stem, "_total_number_barplot.pdf")
-#ggsave(barplot, file=output_file, width=7.2, height=5.0, units="in")
-
-#or_input_file <- paste0(output_stem, "_data_or.txt")
-#df_or <- read.table(or_input_file, header=TRUE, sep="\t")
-
-#output_file <- paste0(output_stem, "_enrichment_odds_ratio_plot.pdf")
-#or_plot <- make_or_plot(df_or)
-#ggsave(or_plot, file=output_file, width=7.2, height=5.0, units="in")
-
-
-
-#joint <- plot_grid(barplot + labs(y="\nTotal cases"), or_plot+labs(y="\n\n\nodds ratio"), labels=c("A","B"), ncol=1)
-#output_file <- paste0(output_stem, "_joint_plot.pdf")
-#ggsave(joint, file=output_file, width=7.2, height=6.0, units="in")
 
